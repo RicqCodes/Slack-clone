@@ -9,6 +9,7 @@ import {
 const Login = ({ setUser }) => {
   const signIn = async () => {
     const data = await signInWithGoogle();
+    if (!data) return;
     localStorage.setItem("user", JSON.stringify(data));
     setUser(data);
   };
