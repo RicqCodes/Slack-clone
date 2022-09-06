@@ -1,0 +1,21 @@
+[debug] [2022-09-06T01:01:43.638Z] ----------------------------------------------------------------------
+[debug] [2022-09-06T01:01:43.640Z] Command:       /opt/homebrew/Cellar/node/18.4.0/bin/node /opt/homebrew/bin/firebase init
+[debug] [2022-09-06T01:01:43.640Z] CLI Version:   11.8.0
+[debug] [2022-09-06T01:01:43.640Z] Platform:      darwin
+[debug] [2022-09-06T01:01:43.640Z] Node Version:  v18.4.0
+[debug] [2022-09-06T01:01:43.643Z] Time:          Tue Sep 06 2022 09:01:43 GMT+0800 (Singapore Standard Time)
+[debug] [2022-09-06T01:01:43.644Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-09-06T01:01:43.648Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-09-06T01:01:43.648Z] > authorizing via signed-in user (ikechukwuprince481@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/prince-dev/Desktop/learn-react/slack
+
