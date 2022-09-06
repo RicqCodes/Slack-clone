@@ -4,6 +4,7 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ChatInput from "./ChatInput";
 import ChatMessage from "./ChatMessage";
+import DefaultDetails from "./DefaultDetails";
 import db from "../firebase";
 import {
   doc,
@@ -47,7 +48,7 @@ const Chat = ({ user }) => {
     const collectionRef = collection(db, "rooms");
     const docs = doc(collectionRef, channelId);
     const docsCollection = collection(docs, "messages");
-    const add = addDoc(docsCollection, payload);
+    addDoc(docsCollection, payload);
   };
 
   const getChannel = async () => {
@@ -97,14 +98,21 @@ const Chat = ({ user }) => {
       </HeaderContainer>
       <MessageContainer>
         {messages.length > 0 &&
-          messages.map((data) => (
+          messages.map((data, id) => (
             <ChatMessage
+              key={id}
               text={data.text}
               name={data.user}
               image={data.userImage}
               timestamp={data.timestamp}
             />
           ))}
+        {messages.length == 0 && (
+          <DefaultDetails
+            image={"https://i.imgur.com/0CXx1z4.png"}
+            text={"No Messages"}
+          />
+        )}
       </MessageContainer>
       <ChatInput sendMessage={sendMessage} />
     </Container>

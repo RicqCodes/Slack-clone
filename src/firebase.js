@@ -10,10 +10,10 @@ import {
 } from "firebase/auth";
 import {
   getFirestore,
-  query,
-  getDocs,
+  // query,
+  // getDocs,
   collection,
-  where,
+  // where,
   addDoc,
 } from "firebase/firestore";
 
@@ -35,8 +35,8 @@ const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
-    const q = query(collection(db, "users"), where("uid", "==", user.uid));
-    const docs = await getDocs(q);
+    // const q = query(collection(db, "users"), where("uid", "==", user.uid));
+    // const docs = await getDocs(q);
     // if (docs.docs.length === 0) {
     //   await addDoc(collection(db, "users"), {
     //     uid: user.uid,

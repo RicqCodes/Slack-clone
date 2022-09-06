@@ -7,7 +7,6 @@ const ChatMessage = ({ text, name, image, timestamp }) => {
 
   useEffect(() => {
     generateColor();
-    console.log(color);
   }, [text]);
 
   return (

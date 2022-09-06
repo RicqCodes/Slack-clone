@@ -6,9 +6,11 @@ import Login from "./components/Login";
 import Chat from "./components/Chat";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import Homepage from "./components/DefaultDetails";
+import { collection, onSnapshot } from "firebase/firestore";
 import db from "./firebase";
 import { logout } from "./firebase";
+import DefaultDetails from "./components/DefaultDetails";
 
 function App() {
   const [rooms, setRooms] = useState([]);
@@ -20,14 +22,14 @@ function App() {
     setUser(null);
   };
 
-  const getChannels = async () => {
-    const query = await getDocs(collection(db, "rooms"));
-    const retrievedData = [];
-    query.forEach((doc) => {
-      retrievedData.push({ id: doc.id, name: doc.data().name });
-    });
-    setRooms(retrievedData);
-  };
+  // const getChannels = async () => {
+  //   const query = await getDocs(collection(db, "rooms"));
+  //   const retrievedData = [];
+  //   query.forEach((doc) => {
+  //     retrievedData.push({ id: doc.id, name: doc.data().name });
+  //   });
+  //   setRooms(retrievedData);
+  // };
 
   useEffect(() => {
     const query = collection(db, "rooms");
@@ -57,7 +59,15 @@ function App() {
               <Sidebar rooms={rooms} />
               <Routes>
                 <Route path="/room/:channelId" element={<Chat user={user} />} />
-                <Route path="/">Select or Create Channel</Route>
+                <Route
+                  path="/"
+                  element={
+                    <DefaultDetails
+                      image={"https://i.imgur.com/mP1ULKa.png"}
+                      text={"Select or Create a Channel"}
+                    />
+                  }
+                />
               </Routes>
             </Main>
           </Container>

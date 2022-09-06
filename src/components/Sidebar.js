@@ -55,16 +55,16 @@ const Sidebar = ({ rooms }) => {
         ""
       )}
       <WorkspaceContainer>
-        <Name>DotLaunch</Name>
+        <Name>Ricqcodes</Name>
         <NewMessage>
           <AddCircleOutlineIcon />
         </NewMessage>
       </WorkspaceContainer>
 
       <MainChannels>
-        {sidebarItems.map((item) => {
+        {sidebarItems.map((item, id) => {
           return (
-            <MainChannelItem>
+            <MainChannelItem key={id}>
               {item.icon}
               {item.text}
             </MainChannelItem>
@@ -79,9 +79,9 @@ const Sidebar = ({ rooms }) => {
         </NewChannelContainer>
 
         <ChannelsList>
-          {rooms.map((list) => {
+          {rooms.map((list, id) => {
             return (
-              <Channel onClick={() => goToChannel(list.id)}>
+              <Channel key={id} onClick={() => goToChannel(list.id)}>
                 # {list.name}
               </Channel>
             );
@@ -109,7 +109,10 @@ const WorkspaceContainer = styled.div`
   border-bottom: 1px solid #532753;
 `;
 
-const Name = styled.div``;
+const Name = styled.div`
+  font-weight: 700;
+  font-size: 22px;
+`;
 
 const NewMessage = styled.div`
   width: 36px;
