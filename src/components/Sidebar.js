@@ -14,19 +14,19 @@ const Sidebar = ({ rooms }) => {
   const [input, setInput] = useState("");
   const ref = useRef();
 
-  const addChannel = () => {
-    if (!input) return;
-
-    const add = collection(db, "rooms");
-
-    addDoc(add, { name: input });
-  };
-
   const goToChannel = (id) => {
     if (id) navigate(`/room/${id}`);
   };
 
   useEffect(() => {
+    const addChannel = () => {
+      if (!input) return;
+
+      const add = collection(db, "rooms");
+
+      addDoc(add, { name: input });
+    };
+
     addChannel();
   }, [input]);
 

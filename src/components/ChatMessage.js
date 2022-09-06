@@ -7,6 +7,8 @@ const ChatMessage = ({ text, name, image, timestamp }) => {
 
   useEffect(() => {
     generateColor();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text]);
 
   return (

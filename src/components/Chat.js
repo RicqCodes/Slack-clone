@@ -23,19 +23,6 @@ const Chat = ({ user }) => {
   const [channel, setChannel] = useState();
   const [messages, setMessages] = useState([]);
 
-  const getMessages = () => {
-    const collectionRef = collection(db, "rooms");
-    const docs = doc(collectionRef, channelId);
-    const docsCollection = query(
-      collection(docs, "messages"),
-      orderBy("timestamp", "asc")
-    );
-    onSnapshot(docsCollection, (snapshot) => {
-      let messages = snapshot.docs.map((doc) => doc.data());
-      setMessages(messages);
-    });
-  };
-
   const sendMessage = (text) => {
     if (!channelId) return;
     let payload = {
@@ -51,23 +38,36 @@ const Chat = ({ user }) => {
     addDoc(docsCollection, payload);
   };
 
-  const getChannel = async () => {
-    try {
-      const docRef = doc(db, "rooms", channelId);
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        setChannel(docSnap.data());
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   useEffect(() => {
+    const getChannel = async () => {
+      try {
+        const docRef = doc(db, "rooms", channelId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setChannel(docSnap.data());
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    const getMessages = () => {
+      const collectionRef = collection(db, "rooms");
+      const docs = doc(collectionRef, channelId);
+      const docsCollection = query(
+        collection(docs, "messages"),
+        orderBy("timestamp", "asc")
+      );
+      onSnapshot(docsCollection, (snapshot) => {
+        let messages = snapshot.docs.map((doc) => doc.data());
+        setMessages(messages);
+      });
+    };
+
     getChannel();
     getMessages();
   }, [channelId]);
@@ -107,7 +107,7 @@ const Chat = ({ user }) => {
               timestamp={data.timestamp}
             />
           ))}
-        {messages.length == 0 && (
+        {messages.length === 0 && (
           <DefaultDetails
             image={"https://i.imgur.com/0CXx1z4.png"}
             text={"No Messages"}
