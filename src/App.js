@@ -6,7 +6,6 @@ import Login from "./components/Login";
 import Chat from "./components/Chat";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Homepage from "./components/DefaultDetails";
 import { collection, onSnapshot } from "firebase/firestore";
 import db from "./firebase";
 import { logout } from "./firebase";

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
+// import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 
 const DefaultDetails = ({ image, text }) => {
   return (
@@ -61,8 +61,8 @@ const Text = styled.h2`
   color: #8e718e;
 `;
 
-const Icon = styled(AddCircleOutlineOutlinedIcon)`
-  cursor: pointer;
-  color: #8e718e;
-  stroke: #8e718e;
-`;
+// const Icon = styled(AddCircleOutlineOutlinedIcon)`
+//   cursor: pointer;
+//   color: #8e718e;
+//   stroke: #8e718e;
+// `;
